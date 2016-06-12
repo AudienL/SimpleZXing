@@ -1,11 +1,14 @@
 package com.google.zxing.client.android;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.SurfaceHolder;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -62,6 +66,32 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
         inactivityTimer = new InactivityTimer(this);
         vibrateManager = new VibrateManager(this);
         ambientLightManager = new AmbientLightManager(this);
+
+        // TODO: 2016/6/12 0012 未完成
+//        requestPermission();
+    }
+
+    private static final int REQUEST_CODE_REQUEST_CAMERA_PERMISSION = 1;
+
+    private void requestPermission() {
+        int hasCameraPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_REQUEST_CAMERA_PERMISSION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_REQUEST_CAMERA_PERMISSION:
+                if (PackageManager.PERMISSION_GRANTED != grantResults[0]) {
+                    Toast.makeText(this, R.string.err_no_camera_permission, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
     @Override

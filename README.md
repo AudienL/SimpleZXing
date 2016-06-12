@@ -6,7 +6,7 @@
 
 ## APK：
 
-[下载DEMO](https://github.com/AudienL/SimpleZXing/blob/master/document/app-release.apk)
+[下载DEMO](https://github.com/AudienL/SimpleZXing/blob/master/document/app-release.apk?raw=true)
 
 ## 使用：
 
@@ -32,13 +32,13 @@ dependencies {
 
 ### 三、使用
 
-#### SimpleScanActivity
+#### 1> SimpleScanActivity
 
 ```java
 startActivity(new Intent(context, SimpleScanActivity.class));
 ```
 
-#### 自定义
+#### 2> 自定义
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
