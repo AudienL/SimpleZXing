@@ -10,7 +10,6 @@ import android.view.View;
 import com.google.zxing.client.android.camera.CameraManager;
 
 public final class ViewfinderView extends View {
-
     /** 黑色背景 */
     private static final int COLOR_BACKGROUND = 0x60000000;
     /** 黄色边框 */
@@ -24,18 +23,27 @@ public final class ViewfinderView extends View {
     /** 刷新的区域距离frame的距离 */
     private static final int POINT_SIZE = 6;
 
+    private Context context;
+
     private CameraManager cameraManager;
     private final Paint paint;
     private int scannerAlphaIndex;
 
     public ViewfinderView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         scannerAlphaIndex = 0;
     }
 
     public void setCameraManager(CameraManager cameraManager) {
         this.cameraManager = cameraManager;
+    }
+
+    public static int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources()
+                                   .getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
     @Override
@@ -48,6 +56,11 @@ public final class ViewfinderView extends View {
         if (frame == null || previewFrame == null) {
             return;
         }
+
+        // 缩小边框
+        int padding = dp2px(context, 50);
+        frame = new Rect(frame.left + padding, frame.top + padding, frame.right - padding, frame.bottom - padding);
+
         int width = canvas.getWidth();
         int height = canvas.getHeight();
 
@@ -73,11 +86,7 @@ public final class ViewfinderView extends View {
         canvas.drawRect(frame.left + 2, middle - 1, frame.right - 1, middle + 2, paint);
 
         // 区域刷新
-        postInvalidateDelayed(ANIMATION_DELAY,
-                frame.left - POINT_SIZE,
-                frame.top - POINT_SIZE,
-                frame.right + POINT_SIZE,
-                frame.bottom + POINT_SIZE);
+        postInvalidateDelayed(ANIMATION_DELAY, frame.left - POINT_SIZE, frame.top - POINT_SIZE, frame.right + POINT_SIZE, frame.bottom + POINT_SIZE);
     }
 
     public void drawViewfinder() {
