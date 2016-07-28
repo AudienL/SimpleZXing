@@ -16,12 +16,12 @@
 
 package com.google.zxing.client.android;
 
-import java.io.FileNotFoundException;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.google.zxing.LuminanceSource;
+
+import java.io.FileNotFoundException;
 
 /**
  * This class is used to help decode images from files which arrive as RGB data
