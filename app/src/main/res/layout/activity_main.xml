@@ -9,18 +9,24 @@
         android:id="@+id/btn_simple_scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SimpleScanActivity"/>
+        android:text="SimpleScanActivity" />
 
     <Button
         android:id="@+id/btn_custom_scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CustomScanActivity"/>
+        android:text="CustomScanActivity" />
 
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="22sp"/>
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_scan_picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="扫描图片" />
 </LinearLayout>
