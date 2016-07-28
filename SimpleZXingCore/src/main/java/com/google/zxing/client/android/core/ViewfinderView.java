@@ -1,4 +1,4 @@
-package com.google.zxing.client.android;
+package com.google.zxing.client.android.core;
 
 import android.content.Context;
 import android.graphics.Canvas;

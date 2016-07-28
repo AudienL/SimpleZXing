@@ -1,4 +1,4 @@
-package com.google.zxing.client.android;
+package com.google.zxing.client.android.core;
 
 import android.Manifest;
 import android.app.Activity;
@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.google.zxing.client.android.R;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.google.zxing.client.android.result.ResultHandler;
 import com.google.zxing.client.android.result.ResultHandlerFactory;

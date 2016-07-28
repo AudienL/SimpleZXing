@@ -49,7 +49,7 @@ startActivity(new Intent(context, SimpleScanActivity.class));
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 
-    <com.google.zxing.client.android.ViewfinderView
+    <com.google.zxing.client.android.core.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>

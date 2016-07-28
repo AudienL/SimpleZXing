@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <Button
+        android:id="@+id/btn_get_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="图片"/>
+
     <SurfaceView
         android:id="@+id/preview_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 
-    <com.google.zxing.client.android.ViewfinderView
+    <com.google.zxing.client.android.core.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
